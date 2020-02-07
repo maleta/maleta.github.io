@@ -1,0 +1,21 @@
+.link-fix {
+  display: unset;
+  font-size: 18px;
+}
+a.icon>strong {
+  margin-left: .4rem;
+  margin-right: .4rem;
+}
+.margin-surround {
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+}
+.content li {
+  margin-top: none !important;
+}
+.up-1-em {
+  margin-top: -1em;
+}
+.flex-align-center {
+  align-items: center;
+}
