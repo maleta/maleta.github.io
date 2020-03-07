@@ -19,3 +19,9 @@ a.icon>strong {
 .flex-align-center {
   align-items: center;
 }
+.ul-style {
+  margin-top: 10px;
+  margin-left: 10px;
+  list-style-type: circle;
+  list-style-position: inside;
+}
