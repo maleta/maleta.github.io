@@ -2,28 +2,151 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Aleksandar Maletić resume</title>
+    <title>Aleksandar Maletić</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
     <meta name="robots" content="index, follow">
 
     <link rel="icon" href="favicon.png" type="image/x-icon">
-    <meta property="og:title" content="Aleksandar Maletic resume" />
+    <meta property="og:title" content="Aleksandar Maletic" />
     <meta property="og:url" content="https://maleta.github.io" />
 
     <link rel="shortcut icon" href="favicon.png">
     <style>
-      iframe {
-        width: 100%;
-        height: 100vh;
-        border: none;
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #0d1117;
+        color: #e6edf3;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding: 3rem 2rem;
       }
+      .container { max-width: 520px; width: 100%; }
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        color: #f0f6fc;
+      }
+      .timeline { position: relative; padding-left: 2rem; }
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 8px;
+        bottom: 8px;
+        width: 2px;
+        background: #30363d;
+      }
+      .timeline-item { position: relative; margin-bottom: 1.25rem; }
+      .timeline-dot {
+        position: absolute;
+        left: -2rem;
+        top: 1rem;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #30363d;
+        border: 2px solid #0d1117;
+        z-index: 1;
+      }
+      .timeline-date {
+        font-size: 0.75rem;
+        color: #8b949e;
+        margin-bottom: 0.375rem;
+        font-variant-numeric: tabular-nums;
+      }
+      .link-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 0.875rem 1.25rem;
+        background: #161b22;
+        border: 1px solid #30363d;
+        border-radius: 8px;
+        color: #58a6ff;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: background 0.15s, border-color 0.15s;
+      }
+      .link-card:hover {
+        background: #1c2333;
+        border-color: #58a6ff;
+      }
+      .icon {
+        flex-shrink: 0;
+        font-size: 1.1rem;
+        line-height: 1.4;
+      }
+      .card-body { min-width: 0; }
+      .desc {
+        display: block;
+        font-size: 0.8rem;
+        color: #8b949e;
+        margin-top: 0.25rem;
+      }
+      .sub-link {
+        display: inline-block;
+        font-size: 0.8rem;
+        color: #58a6ff;
+        text-decoration: none;
+        margin-top: 0.375rem;
+        margin-left: 2.85rem;
+      }
+      .sub-link:hover { text-decoration: underline; }
     </style>
-
   </head>
 
   <body>
-    <iframe src="docs/Aleksandar Maletic - Resume.pdf" type="application/pdf"></iframe>
+    <div id="app"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@maleta/blokjs@0.1.1/dist/blokjs.min.js"></script>
+    <script>
+      blok.mount('#app', {
+        state: {
+          items: [
+            { name: 'CV', url: 'docs/Aleksandar Maletic - Resume.pdf', desc: '', date: '', icon: '\u{1F4CE}' },
+            { name: 'BlokJS', url: 'https://github.com/maleta/blokjs', desc: 'Zero-build, zero-dependency, standalone, reactive, lightweight UI framework', date: 'Mar 2026', icon: '\u{1F4E6}' },
+            { name: 'gitask', url: 'https://gist.github.com/maleta/16e7072bf469b95df73aa64d7471f6f6', desc: 'Clone a GitHub repo and start Claude Code in it', date: 'Feb 2026', icon: '\u{1F4C4}' },
+            { name: 'claude-rename', url: 'https://gist.github.com/maleta/a71b54c121c262221f7e32ff45db32c1', desc: 'Rename a project folder and update Claude Code sessions', date: '', icon: '\u{1F4C4}' },
+            { name: 'link-in-same-page', url: 'https://github.com/maleta/link-in-same-page', desc: 'Browser extension', date: 'Apr 2024', icon: '\u{1F4E6}', sublink: 'https://dev.to/maleta/transforming-desktop-browsing-experience-a-proof-of-concept-417', sublinkText: '\u{270D}\u{FE0F} blog post' },
+            { name: 'scuba-rec-planner', url: 'https://github.com/maleta/scuba-rec-planner', desc: 'Recreational scuba dive planner', date: 'Aug 2023', icon: '\u{1F4E6}' },
+            { name: 'CORS, XSS and CSRF with examples in 10 minutes', url: 'https://dev.to/maleta/cors-xss-and-csrf-with-examples-in-10-minutes-35k3', desc: '', date: 'Dec 2019', icon: '\u{270D}\u{FE0F}' },
+            { name: 'discord-logger', url: 'https://github.com/maleta/discord-logger', desc: 'Log events from Node.js to Discord using webhooks', date: 'Feb 2018', icon: '\u{1F4E6}' },
+            { name: 'chart-generator', url: 'https://github.com/maleta/chart-generator', desc: 'Generate chart images server-side with Google Apps Script', date: 'Oct 2017', icon: '\u{1F4E6}' }
+          ]
+        },
+        view: ($) => ({
+          div: { class: 'container', children: [
+            { h1: 'Aleksandar Maletić' },
+            { div: { class: 'timeline', children: [
+              { each: $.items, as: 'item', children: [
+                { div: { class: 'timeline-item', children: [
+                  { div: { class: 'timeline-dot' } },
+                  { when: $.item.date, children: [
+                    { div: { class: 'timeline-date', text: $.item.date } }
+                  ]},
+                  { a: { class: 'link-card', bind: { href: $.item.url }, children: [
+                    { span: { class: 'icon', text: $.item.icon } },
+                    { div: { class: 'card-body', children: [
+                      { span: { text: $.item.name } },
+                      { when: $.item.desc, children: [
+                        { span: { class: 'desc', text: $.item.desc } }
+                      ]}
+                    ]}}
+                  ]}},
+                  { when: $.item.sublink, children: [
+                    { a: { class: 'sub-link', bind: { href: $.item.sublink }, text: $.item.sublinkText } }
+                  ]}
+                ]}}
+              ]}
+            ]}}
+          ]}
+        })
+      })
+    </script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63458477-2"></script>
