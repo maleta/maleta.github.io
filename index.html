@@ -29,6 +29,13 @@
         font-weight: 600;
         margin-bottom: 2rem;
         color: #f0f6fc;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .cv-link {
+        font-size: 1rem;
+        text-decoration: none;
       }
       .timeline { position: relative; padding-left: 2rem; }
       .timeline::before {
@@ -107,11 +114,10 @@
       blok.mount('#app', {
         state: {
           items: [
-            { name: 'CV', url: 'docs/Aleksandar Maletic - Resume.pdf', desc: '', date: '', icon: '\u{1F4CE}' },
-            { name: 'BlokJS', url: 'https://github.com/maleta/blokjs', desc: 'Zero-build, zero-dependency, standalone, reactive, lightweight UI framework', date: 'Mar 2026', icon: '\u{1F4E6}' },
+{ name: 'BlokJS', url: 'https://github.com/maleta/blokjs', desc: 'Zero-build, zero-dependency, standalone, reactive, lightweight UI framework', date: 'Mar 2026', icon: '\u{1F4E6}' },
             { name: 'gitask', url: 'https://gist.github.com/maleta/16e7072bf469b95df73aa64d7471f6f6', desc: 'Clone a GitHub repo and start Claude Code in it', date: 'Feb 2026', icon: '\u{1F4C4}' },
             { name: 'claude-rename', url: 'https://gist.github.com/maleta/a71b54c121c262221f7e32ff45db32c1', desc: 'Rename a project folder and update Claude Code sessions', date: '', icon: '\u{1F4C4}' },
-            { name: 'link-in-same-page', url: 'https://github.com/maleta/link-in-same-page', desc: 'Browser extension', date: 'Apr 2024', icon: '\u{1F4E6}', sublink: 'https://dev.to/maleta/transforming-desktop-browsing-experience-a-proof-of-concept-417', sublinkText: '\u{270D}\u{FE0F} blog post' },
+            { name: 'link-in-same-page', url: 'https://github.com/maleta/link-in-same-page', desc: 'Proof of Concept: Open links in-place without leaving the page', date: 'Apr 2024', icon: '\u{1F4E6}', sublink: 'https://dev.to/maleta/transforming-desktop-browsing-experience-a-proof-of-concept-417', sublinkText: '\u{270D}\u{FE0F} blog post' },
             { name: 'scuba-rec-planner', url: 'https://github.com/maleta/scuba-rec-planner', desc: 'Recreational scuba dive planner', date: 'Aug 2023', icon: '\u{1F4E6}' },
             { name: 'CORS, XSS and CSRF with examples in 10 minutes', url: 'https://dev.to/maleta/cors-xss-and-csrf-with-examples-in-10-minutes-35k3', desc: '', date: 'Dec 2019', icon: '\u{270D}\u{FE0F}' },
             { name: 'discord-logger', url: 'https://github.com/maleta/discord-logger', desc: 'Log events from Node.js to Discord using webhooks', date: 'Feb 2018', icon: '\u{1F4E6}' },
@@ -120,7 +126,10 @@
         },
         view: ($) => ({
           div: { class: 'container', children: [
-            { h1: 'Aleksandar Maletić' },
+            { h1: { children: [
+              { span: 'Aleksandar Maletić' },
+              { a: { class: 'cv-link', href: 'docs/Aleksandar Maletic - Resume.pdf', title: 'CV', text: '\u{1F4CE}' } }
+            ]}},
             { div: { class: 'timeline', children: [
               { each: $.items, as: 'item', children: [
                 { div: { class: 'timeline-item', children: [
@@ -148,15 +157,15 @@
       })
     </script>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63458477-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q1DS137P8T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    gtag('config', 'UA-63458477-2');
-  </script>
+  gtag('config', 'G-Q1DS137P8T');
+</script>
   </body>
 
 </html>
